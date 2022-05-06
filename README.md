@@ -1,6 +1,6 @@
 # nodejs-express-mongodb-webapp
-This project learning about : 
-## [1] the first page
+
+***The first page***
   - setting up express
   - running express
   - debugging option
