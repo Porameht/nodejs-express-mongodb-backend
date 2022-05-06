@@ -6,5 +6,5 @@ This project learning about :
   - debugging option
     - `require('chalk')`
     - `require('morgan')`
-    - `require('debug')
+    - `require('debug')`
   - serving HTML index.js
