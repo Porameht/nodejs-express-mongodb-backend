@@ -1,18 +1,23 @@
 const express = require("express");
 const chalk = require("chalk");
 const PORT = process.env.PORT || 3000;
-const debug = require('debug')('app');
+const debug = require("debug")("app");
 const app = express();
-const morgan = require('morgan');
-const path = require('path');
+const morgan = require("morgan");
+const path = require("path");
 
 // app.use(morgan('combined'));
-app.use(morgan('tiny'));
+app.use(morgan("tiny"));
+
+// app.use views index.html in public directory
 app.use(express.static(path.join(__dirname,'/public/')));
 
+app.set("views", "./src/views");
+app.set("view engine", "ejs");
 
 app.get("/", (req, res) => {
-  res.send("Hello Frank");
+  // res.send("Hello Frank");
+  res.render("index", { title: "Frank Home", data: ["a", "b", "c", "d"] });
 });
 
 app.listen(PORT, () => {
