@@ -5,16 +5,23 @@ const debug = require("debug")("app");
 const app = express();
 const morgan = require("morgan");
 const path = require("path");
+const sessionsRouter = require("./src/routers/sessionRouter")
+
 
 // app.use(morgan('combined'));
 app.use(morgan("tiny"));
 
 // app.use views index.html in public directory
-app.use(express.static(path.join(__dirname,'/public/')));
-
+app.use(express.static(path.join(__dirname, "/public/")));
+ 
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
+
+
+app.use("/sessions", sessionsRouter);
+
+// exemple pass data
 app.get("/", (req, res) => {
   // res.send("Hello Frank");
   res.render("index", { title: "Frank Home", data: ["a", "b", "c", "d"] });
