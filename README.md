@@ -45,3 +45,33 @@
       session: sessions[id],
     });
     ```
+***:books:5. connecting to a database (nosql)***
+  - setting mongodb :floppy_disk:
+    ```
+    https://cloud.mongodb.com/ => {name: "nodejs-globomantics"}
+    npm install mongodb
+    const { MongoClient } = require("mongodb");
+    ```
+  - using mongodb :floppy_disk:
+    ```
+    const url =
+    "mongodb+srv://<user>:<password>@nodejs-globomantics.iymsi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+    const dbName = "nodejs-globomantics";
+    ```
+  - inserting data :floppy_disk:
+    ```
+    const response = await db.collection('sessions').insertMany(sessions);
+    res.json(response);
+    ```
+  - querying data
+    - selecting sessions :floppy_disk:
+    ```
+    const sessions = await db.collection("sessions").find().toArray();
+    res.render("sessions", { sessions });
+    ```
+    - selecting one session :floppy_disk:
+    ```
+    const session = await db.collection("sessions").findOne({ _id: new ObjectID(id) });
+    res.render("session", { session });
+    
+    ```
