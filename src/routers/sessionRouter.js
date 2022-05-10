@@ -4,6 +4,13 @@ const sessionsRouter = express.Router();
 const debug = require("debug")("app:sessionRouter");
 
 // const sessions = require("../data/sessions.json");
+sessionsRouter.use((req, res, next) => {
+  if (req.user) {
+    next();
+  } else {
+    res.redirect("/auth/signIn");
+  }
+});
 
 // learn more page
 sessionsRouter.route("/").get((req, res) => {
