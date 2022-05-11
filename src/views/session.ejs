@@ -1,7 +1,11 @@
 <html>
   <body>
     <%=session.title%> <br />
-    <%=session.speakers[0].name%> <br />
+    <!-- get data from mongodb -->
+    <!-- <%=session.speakers[0].name%> <br /> -->
+    <!-- get data from speaker api -->
+    <%=session.speaker.name%> <br />
+    Speaker Bio: <%=session.speaker.bio%><p>
     <%=session.description%> <br />
   </body>
 </html>
